@@ -1,5 +1,5 @@
 #커맨드라인에서 인수 입력받기
-
+# 015.py
 import sys
 
 #print(dir(sys))
