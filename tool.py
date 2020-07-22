@@ -55,6 +55,7 @@ class FASTQ:
     def __init__(self, file_name):
         self.file_name = file_name
         self.read_num = 0
+        self.base = {}
 
     def count_read_num(self):
         cnt = 0
@@ -65,9 +66,29 @@ class FASTQ:
                     self.read_num += 1 
                 elif cnt % 4 == 1:
                     seq = line.strip()
+                    for s in seq:                    # 염기 개수 세기
+                        if s in self.base:            #
+                            self.base[s] += 1         #
+                        else:                        #
+                            self.base[s] = 1         #
                 elif cnt % 4 == 3:
                     qual = line.strip()
                 cnt += 1
+"""
+    def count_base(self):
+        cnt = 0
+        seq = ""
+        with open(self.file_name, 'r') as handle:
+            for line in handle:
+                if cnt % 4 == 1:
+                    seq += line.strip()
+                cnt +=1
+           
+        for i in range(0,len(seq)):
+            if self
+"""
+    
+
 
 if __name__ == "__main__":
     if len(sys.argv) !=2:
@@ -76,4 +97,6 @@ if __name__ == "__main__":
     t = FASTQ(file_name)
     t.count_read_num()
     print(t.read_num)
-   
+    print(t.base)
+
+
